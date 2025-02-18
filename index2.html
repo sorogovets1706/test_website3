@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Красное/Черное</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: green; /* Зеленый фон */
+        }
+        .chip {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+            font-weight: bold;
+            color: white;
+            background-color: blue; /* Синий фон фишки */
+        }
+        .chip.red {
+            background-color: red; /* Красная фишка */
+        }
+        .chip.black {
+            background-color: black; /* Черная фишка */
+        }
+    </style>
+</head>
+<body>
+    <div class="chip" id="redChip" onclick="playGame('red')">Красное</div>
+    <div class="chip" id="blackChip" onclick="playGame('black')">Черное</div>
+
+    <script>
+        function playGame(choice) {
+            const redChip = document.getElementById('redChip');
+            const blackChip = document.getElementById('blackChip');
+
+            // Отключаем кнопки после выбора
+            redChip.style.pointerEvents = 'none';
+            blackChip.style.pointerEvents = 'none';
+
+            // Рандомный выбор (красное или черное)
+            const result = Math.random() < 0.5 ? 'red' : 'black';
+
+            // Показываем результат
+            if (result === 'red') {
+                redChip.classList.add('red');
+                blackChip.classList.remove('black');
+            } else {
+                blackChip.classList.add('black');
+                redChip.classList.remove('red');
+            }
+
+            // Сообщаем результат
+            setTimeout(() => {
+                alert(result === choice ? 'Вы выиграли!' : 'Вы проиграли!');
+                // Перезагружаем игру
+                window.location.reload();
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
