@@ -3,71 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Красное/Черное</title>
+    <title>Ввод данных</title>
     <style>
         body {
-            margin: 0;
-            padding: 0;
+            font-family: Arial, sans-serif;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
+            justify-content: center;
             height: 100vh;
-            background-color: green; /* Зеленый фон */
+            margin: 0;
+            background-color: #f4f4f9;
         }
-        .chip {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            margin: 20px;
-            cursor: pointer;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 20px;
-            font-weight: bold;
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
             color: white;
-            background-color: blue; /* Синий фон фишки */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
         }
-        .chip.red {
-            background-color: red; /* Красная фишка */
+        button:hover {
+            background-color: #0056b3;
         }
-        .chip.black {
-            background-color: black; /* Черная фишка */
+        .output {
+            margin-top: 20px;
+            font-size: 18px;
+            word-wrap: break-word;
         }
     </style>
 </head>
 <body>
-    <div class="chip" id="redChip" onclick="playGame('red')">Красное</div>
-    <div class="chip" id="blackChip" onclick="playGame('black')">Черное</div>
+    <div class="container">
+        <input type="text" id="c1" placeholder="Введите C_1">
+        <input type="text" id="c2" placeholder="Введите C_2">
+        <input type="text" id="c3" placeholder="Введите C_3">
+        <button onclick="submitData()">SUBMIT</button>
+        <div class="output" id="output"></div>
+    </div>
 
-    <script>
-        function playGame(choice) {
-            const redChip = document.getElementById('redChip');
-            const blackChip = document.getElementById('blackChip');
-
-            // Отключаем кнопки после выбора
-            redChip.style.pointerEvents = 'none';
-            blackChip.style.pointerEvents = 'none';
-
-            // Рандомный выбор (красное или черное)
-            const result = Math.random() < 0.5 ? 'red' : 'black';
-
-            // Показываем результат
-            if (result === 'red') {
-                redChip.classList.add('red');
-                blackChip.classList.remove('black');
-            } else {
-                blackChip.classList.add('black');
-                redChip.classList.remove('red');
-            }
-
-            // Сообщаем результат
-            setTimeout(() => {
-                alert(result === choice ? 'Вы выиграли!' : 'Вы проиграли!');
-                // Перезагружаем игру
-                window.location.reload();
-            }, 1000);
-        }
-    </script>
+    <!-- Подключаем JavaScript -->
+    <script src="script.js"></script>
 </body>
 </html>
